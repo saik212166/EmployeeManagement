@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+h1 {
+    text-align: center;
+    color: #333;
+}
+#employee-form, #login-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+#employee-form input, #login-section input, button {
+    padding: 10px;
+    font-size: 16px;
+}
+#employee-list .employee {
+    background: #eee;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.employee button {
+    margin-left: 10px;
+}
+.error {
+    color: red;
+    font-size: 14px;
+}
