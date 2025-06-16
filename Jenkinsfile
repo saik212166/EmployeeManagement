@@ -8,8 +8,8 @@ pipeline {
     environment {
         IMAGE_NAME = 'employee-management-app'
         CONTAINER_NAME = 'employee-management-container'
-        HOST_PORT = '8081'        // Using 8081 on host to avoid conflict
-        CONTAINER_PORT = '8080'   // App inside container listens on 8080
+        HOST_PORT = '9090'        // Host port
+        CONTAINER_PORT = '9090'   // Container port (app listens here)
     }
 
     stages {
