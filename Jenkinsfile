@@ -8,7 +8,8 @@ pipeline {
     environment {
         IMAGE_NAME = 'employee-management-app'
         CONTAINER_NAME = 'employee-management-container'
-        PORT = '8080'
+        HOST_PORT = '8081'        // Using 8081 on host to avoid conflict
+        CONTAINER_PORT = '8080'   // App inside container listens on 8080
     }
 
     stages {
@@ -42,8 +43,8 @@ pipeline {
 
         stage('Run Docker Container') {
             steps {
-                echo 'Running application in Docker container...'
-                bat "docker run -d --name %CONTAINER_NAME% -p %PORT%:8080 %IMAGE_NAME%"
+                echo 'Running application in Docker container on port %HOST_PORT%...'
+                bat "docker run -d --name %CONTAINER_NAME% -p %HOST_PORT%:%CONTAINER_PORT% %IMAGE_NAME%"
             }
         }
     }
