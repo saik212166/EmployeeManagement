@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        maven 'MAVEN' // Update this to match your Maven installation in Jenkins
+        maven 'MAVEN' // Make sure this Maven tool is configured in Jenkins -> Global Tool Configuration
     }
 
     environment {
@@ -22,28 +22,28 @@ pipeline {
         stage('Build with Maven') {
             steps {
                 echo 'Building the project...'
-                sh 'mvn clean package -DskipTests'
+                bat 'mvn clean package -DskipTests'
             }
         }
 
         stage('Build Docker Image') {
             steps {
                 echo 'Building Docker image...'
-                sh "docker build -t ${IMAGE_NAME} ."
+                bat "docker build -t %IMAGE_NAME% ."
             }
         }
 
         stage('Stop Existing Container') {
             steps {
                 echo 'Stopping and removing existing container (if any)...'
-                sh "docker rm -f ${CONTAINER_NAME} || true"
+                bat "docker rm -f %CONTAINER_NAME% || exit 0"
             }
         }
 
         stage('Run Docker Container') {
             steps {
                 echo 'Running application in Docker container...'
-                sh "docker run -d --name ${CONTAINER_NAME} -p ${PORT}:8080 ${IMAGE_NAME}"
+                bat "docker run -d --name %CONTAINER_NAME% -p %PORT%:8080 %IMAGE_NAME%"
             }
         }
     }
