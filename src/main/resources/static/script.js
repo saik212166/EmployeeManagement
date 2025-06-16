@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080/employees";
+const API_URL = "http://localhost:9090/employees";
 
 document.addEventListener("DOMContentLoaded", () => {
     checkLoginStatus();
@@ -21,7 +21,7 @@ function login() {
     formData.append('username', document.getElementById("username").value);
     formData.append('password', document.getElementById("password").value);
 
-    fetch("http://localhost:8080/login", {
+    fetch("http://localhost:9090/login", {
         method: "POST",
         body: formData,
         credentials: "include"
@@ -36,7 +36,7 @@ function login() {
 }
 
 function logout() {
-    fetch("http://localhost:8080/logout", {
+    fetch("http://localhost:9090/logout", {
         method: "POST",
         credentials: "include"
     }).then(() => {
